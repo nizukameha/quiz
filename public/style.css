@@ -9,3 +9,10 @@ body {
     background-color: white;
     border-radius: 5%;
 }
+.reponse1, .reponse2, .reponse3, .reponse4 {
+    background-color: grey;
+    color: white;
+}
+.reponse1:hover, .reponse2:hover, .reponse3:hover, .reponse4:hover {
+    background-color: grey;
+}
