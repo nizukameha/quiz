@@ -1,0 +1,23 @@
+{
+    "name": "ts-dom",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "parcel public/*.html"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@gitlab.com/simplonlyon/promo23/ts-dom.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://gitlab.com/simplonlyon/promo23/ts-dom/issues"
+    },
+    "homepage": "https://gitlab.com/simplonlyon/promo23/ts-dom#readme",
+    "devDependencies": {
+      "parcel": "^2.8.0"
+    }
+  }
