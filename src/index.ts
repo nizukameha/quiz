@@ -1,13 +1,18 @@
 let score = document.querySelector<HTMLElement>('.score');
 let scoreNumber = 0;
 let valider = document.querySelector<HTMLElement>('.valider');
-let reponse1 = document.querySelector<HTMLElement>('reponse1');
+let reponse1 = document.querySelector<HTMLElement>('.reponse1');
 
 if (reponse1) {
     console.log('OK');
-    reponse1.style.backgroundColor = 'red';
+    reponse1.onclick = changeColor;
 }
-
+// Cette fonction permet de changer la couleur d'une réponse selectionnée
+function changeColor () {
+    if (reponse1) {
+    reponse1.style.backgroundColor = 'blue';
+    }
+}
 
 // Cette fonction ajoute du score lors du click du bouton 'valider'
 function check () {
