@@ -15,4 +15,9 @@ body {
 }
 .reponse1:hover, .reponse2:hover, .reponse3:hover, .reponse4:hover {
     background-color: grey;
+    color: white
+}
+.reponseSelect, .reponseSelect:hover {
+    background-color: blue;
+    color: white;
 }
