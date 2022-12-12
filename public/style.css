@@ -1,1 +1,11 @@
-h1 {color: red}
+body {
+    margin: 0 auto;
+    background-color: rgb(200, 200, 200);
+}
+.logo {
+    width: 20%;
+}
+.answers, .questions {
+    background-color: white;
+    border-radius: 5%;
+}
