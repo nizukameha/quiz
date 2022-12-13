@@ -30,17 +30,20 @@ if (valider) {
 if (reponse1) {
     reponse1.addEventListener('click', () => {
         checkReponseSelect(reponse1, reponse2, reponse3, reponse4);
+        isCorrectAnswer = false;
     })
 }
 if (reponse2) {
     reponse2.addEventListener('click', () => {
         checkReponseSelect(reponse2, reponse1, reponse3, reponse4);
+        isCorrectAnswer = false;
     })
 }
 //49, 108, 244
 if (reponse3) {
     reponse3.addEventListener('click', () => {
         checkReponseSelect(reponse3, reponse2, reponse1, reponse4);
+        isCorrectAnswer = false;
     })
 }
 if (reponse4) {
