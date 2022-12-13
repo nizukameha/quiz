@@ -1,7 +1,7 @@
 /*----------
 IMPORT
 ---------- */
-
+ 
 import guts from "/assets/guts.webp";
 import dragonball from "/assets/dragon-ball.jpeg";
 
@@ -27,9 +27,22 @@ let questionCounter:number = 0;
 let scoreNumber:number = 0;
 let questionNumber2:number = 1;
 let imageCounter:number = 0;
+let reponsesCounter:number = 0;
 // Array
-let tabQuestions:string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a débuté Dragon Ball ?']
+let tabQuestions:string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?']
 let tabImgOnRight:string[] = [guts,dragonball];
+let tabReponses:string[][] = [
+    ['Akira Toriyama','Eiichiro Oda','Kentaro Miura','Masashi Kishimito'],
+    ['1979','1982','1984','1988'],
+    ['','','',''],
+    ['','','',''],
+    ['','','',''],
+    ['','','',''],
+    ['','','',''],
+    ['','','',''],
+    ['','','',''],
+    ['','','','']
+];
 
 /*----------
 CONDITIONS
@@ -56,10 +69,12 @@ if (valider) {
     valider.addEventListener('click', () => {
         check();
         next();
+        changeAnswer();
     })
 }
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 if (reponse1) {
+    reponse1.innerHTML = tabReponses[0][0];
     reponse1.addEventListener('click', () => {
         checkReponseSelect(reponse1, reponse2, reponse3, reponse4);
         isCorrectAnswer = false;
@@ -67,6 +82,7 @@ if (reponse1) {
 }
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 if (reponse2) {
+    reponse2.innerHTML = tabReponses[0][1];
     reponse2.addEventListener('click', () => {
         checkReponseSelect(reponse2, reponse1, reponse3, reponse4);
         isCorrectAnswer = false;
@@ -74,6 +90,7 @@ if (reponse2) {
 }
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 if (reponse3) {
+    reponse3.innerHTML = tabReponses[0][2];
     reponse3.addEventListener('click', () => {
         checkReponseSelect(reponse3, reponse2, reponse1, reponse4);
         isCorrectAnswer = true;
@@ -81,6 +98,7 @@ if (reponse3) {
 }
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 if (reponse4) {
+    reponse4.innerHTML = tabReponses[0][3];
     reponse4.addEventListener('click', () => {
         checkReponseSelect(reponse4, reponse2, reponse3, reponse1);
         isCorrectAnswer = false;
@@ -144,5 +162,21 @@ function next () {
     if (imgOnRight) {
         imageCounter++;
         imgOnRight.src = tabImgOnRight[imageCounter];
+    }
+}
+
+function changeAnswer () {
+    if (reponse1) {
+        reponsesCounter++;
+        reponse1.innerHTML = tabReponses[reponsesCounter][0];
+    }
+    if (reponse2) {
+        reponse2.innerHTML = tabReponses[reponsesCounter][1];
+    }
+    if (reponse3) {
+        reponse3.innerHTML = tabReponses[reponsesCounter][2];
+    }
+    if (reponse4) {
+        reponse4.innerHTML = tabReponses[reponsesCounter][3];
     }
 }
