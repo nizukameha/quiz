@@ -1,24 +1,44 @@
 /*----------
+IMPORT
+---------- */
+
+import guts from "/assets/guts.webp";
+import dragonball from "/assets/dragon-ball.jpeg";
+
+/*----------
 VARIABLES
 ---------- */
 
+// Query
 let score = document.querySelector<HTMLElement>('.score');
-let scoreNumber:number = 0;
 let valider = document.querySelector<HTMLElement>('.valider');
 let reponse1 = document.querySelector<HTMLElement>('.reponse1');
 let reponse2 = document.querySelector<HTMLElement>('.reponse2');
 let reponse3 = document.querySelector<HTMLElement>('.reponse3');
 let reponse4 = document.querySelector<HTMLElement>('.reponse4');
+let question = document.querySelector<HTMLElement>('.question');
+let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
+let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
+// Bollean
 let reponseIsSelect:boolean = false;
 let isCorrectAnswer:boolean = false;
-let question = document.querySelector<HTMLElement>('.question');
-let tabQuestions:string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a débuté Dragon Ball ?']
+// Number
 let questionCounter:number = 0;
-let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
+let scoreNumber:number = 0;
 let questionNumber2:number = 1;
+let imageCounter:number = 0;
+// Array
+let tabQuestions:string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a débuté Dragon Ball ?']
+let tabImgOnRight:string[] = [guts,dragonball];
+
 /*----------
 CONDITIONS
 ---------- */
+
+// Affiche l'image correspondant a la question actuelle
+if (imgOnRight) {
+    imgOnRight.src = tabImgOnRight[imageCounter];
+}
 // Affiche le numero de la question actuelle
 if (questionNumber) {
     questionNumber.innerHTML = questionNumber2 + '';
@@ -119,5 +139,10 @@ function next () {
     if (question) {
         questionCounter++;
         question.innerHTML = tabQuestions[questionCounter];
+    }
+    // Affiche l'image suivante
+    if (imgOnRight) {
+        imageCounter++;
+        imgOnRight.src = tabImgOnRight[imageCounter];
     }
 }
