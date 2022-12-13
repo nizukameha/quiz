@@ -43,13 +43,13 @@ if (reponse2) {
 if (reponse3) {
     reponse3.addEventListener('click', () => {
         checkReponseSelect(reponse3, reponse2, reponse1, reponse4);
-        isCorrectAnswer = false;
+        isCorrectAnswer = true;
     })
 }
 if (reponse4) {
     reponse4.addEventListener('click', () => {
         checkReponseSelect(reponse4, reponse2, reponse3, reponse1);
-        isCorrectAnswer = true;
+        isCorrectAnswer = false;
     })
 }
 
