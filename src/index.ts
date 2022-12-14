@@ -9,6 +9,9 @@ import kirua from "/assets/kirua.jpeg";
 import bleach from "/assets/bleach.png";
 import fma from "/assets/fma.jpeg";
 import signe1 from "/assets/alphonse1.webp";
+import signe2 from "/assets/alphonse2.jpeg";
+import signe3 from "/assets/alphonse3.webp";
+import signe4 from "/assets/alphonse4.png";
 
 /*----------
 VARIABLES
@@ -40,14 +43,14 @@ let tabReponses: string[][] = [
     ['1979', '1982', '1984', '1988'],
     ['500 000', '1 300 000', '10 000 000', '250 000 000'],
     ['Miruki', 'Irumi', 'Aruka', 'Karuto'],
-    ['Wabisuke', 'Hyōrinmaru', 'Hyōrinmaru', 'Zangetsu'],
-    [insertImg(signe1), insertImg(signe1), '', ''],
+    ['Wabisuke', 'Hyōrinmaru', 'Engetsu', 'Zangetsu'],
+    [insertImg(signe1), insertImg(signe2), insertImg(signe3), insertImg(signe4)],
     ['', '', '', ''],
     ['', '', '', ''],
     ['', '', '', ''],
     ['', '', '', '']
 ];
-let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', '', '', '', '', '']
+let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), '', '', '', '']
 
 /**
  * Insere l'image dans le tableau de réponse
