@@ -16,9 +16,9 @@ let reponses = document.querySelectorAll<HTMLButtonElement>('.reponse');
 let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
 let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
-// Bollean
-let reponseIsSelect:boolean = false;
+// Boolean
 let isCorrectAnswer:boolean = false;
+let answerIsSelected: boolean = false;
 // Number
 let questionCounter:number = 0;
 let scoreNumber:number = 0;
@@ -26,11 +26,12 @@ let questionNumber2:number = 1;
 let imageCounter:number = 0;
 let reponsesCounter:number = 0;
 let i = 0;
+let goodAnswerCounter:number = 0;
 // Array
 let tabQuestions:string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?']
 let tabImgOnRight:string[] = [guts,dragonball];
 let tabReponses:string[][] = [
-    ['Akira Toriyama','Eiichiro Oda','Kentaro Miura','Masashi Kishimito'],
+    ['Akira Toriyama','Eiichiro Oda','Masashi Kishimito','Kentaro Miura'],
     ['1979','1982','1984','1988'],
     ['','','',''],
     ['','','',''],
@@ -41,12 +42,10 @@ let tabReponses:string[][] = [
     ['','','',''],
     ['','','','']
 ];
-
+let tabGoodAnswer:string[] = ['Kentaro Miura','1984','','','','','','','','']
 /*----------
 CONDITIONS
 ---------- */
-
-
 
 // Affiche l'image correspondant a la question actuelle
 if (imgOnRight) {
@@ -59,19 +58,21 @@ if (questionNumber) {
 // Affiche la question actuelle
 if (question) {
     question.innerHTML = tabQuestions[questionCounter];
-    console.log(tabQuestions[questionCounter]);
 }
 // On vérifie une 1ere fois si 'score' existe pour lui attribuer la valeur 0
 if (score) {
     score.innerHTML = scoreNumber + '';
 }
-let answerIsSelected: boolean = false;
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 for (const reponse of reponses) {
     reponse.innerHTML = tabReponses[0][i];
     reponse.addEventListener('click', () => {
         checkReponseSelect(reponse);
-        isCorrectAnswer = false;
+        if (reponse.textContent == tabGoodAnswer[goodAnswerCounter]) {
+        isCorrectAnswer = true;
+        } else {
+            isCorrectAnswer = false;
+        }
         answerIsSelected = true;
     })
     i++;
@@ -82,6 +83,7 @@ valider?.addEventListener('click', () => {
     check();
     next();
     changeAnswer();
+    goodAnswerCounter++;
     }
 })
 
@@ -105,8 +107,8 @@ function checkReponseSelect (reponseColor: HTMLButtonElement) {
  * Ajoute du score pour une bonne réponse
  */
 function check () {
-    // Verifie qu'une reponse a été selectionée et qu'elle est correct
-    if (reponseIsSelect && isCorrectAnswer) {
+    // Verifie que la réponse est correct pour lui attribuer des points
+    if (isCorrectAnswer) {
         scoreNumber += 50;
         if (score) {
             // On doit convertir scoreNumber en string pour le manipuler
