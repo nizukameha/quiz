@@ -29,6 +29,12 @@ h1, h2 {
 .reponseSelect:hover {
     background-color: rgb(41, 93, 207);
 }
+.reponseGood {
+    background-color: rgb(3, 180, 56);
+}
+.reponseBad {
+    background-color: rgb(207, 41, 41);
+}
 @media (max-width: 500px) {
     .imgOnRight {
         display: none;
