@@ -12,10 +12,7 @@ VARIABLES
 // Query
 let score = document.querySelector<HTMLElement>('.score');
 let valider = document.querySelector<HTMLElement>('.valider');
-let reponse1 = document.querySelector<HTMLElement>('.reponse1');
-let reponse2 = document.querySelector<HTMLElement>('.reponse2');
-let reponse3 = document.querySelector<HTMLElement>('.reponse3');
-let reponse4 = document.querySelector<HTMLElement>('.reponse4');
+let reponses = document.querySelectorAll<HTMLButtonElement>('.reponse');
 let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
 let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
@@ -28,6 +25,7 @@ let scoreNumber:number = 0;
 let questionNumber2:number = 1;
 let imageCounter:number = 0;
 let reponsesCounter:number = 0;
+let i = 0;
 // Array
 let tabQuestions:string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?']
 let tabImgOnRight:string[] = [guts,dragonball];
@@ -48,6 +46,8 @@ let tabReponses:string[][] = [
 CONDITIONS
 ---------- */
 
+
+
 // Affiche l'image correspondant a la question actuelle
 if (imgOnRight) {
     imgOnRight.src = tabImgOnRight[imageCounter];
@@ -59,84 +59,53 @@ if (questionNumber) {
 // Affiche la question actuelle
 if (question) {
     question.innerHTML = tabQuestions[questionCounter];
+    console.log(tabQuestions[questionCounter]);
 }
 // On vérifie une 1ere fois si 'score' existe pour lui attribuer la valeur 0
 if (score) {
     score.innerHTML = scoreNumber + '';
 }
+let answerIsSelected: boolean = false;
+// Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
+for (const reponse of reponses) {
+    reponse.innerHTML = tabReponses[0][i];
+    reponse.addEventListener('click', () => {
+        checkReponseSelect(reponse);
+        isCorrectAnswer = false;
+        answerIsSelected = true;
+    })
+    i++;
+}
 // Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
-if (valider) {
-    valider.addEventListener('click', () => {
-        check();
-        next();
-        changeAnswer();
-    })
-}
-// Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
-if (reponse1) {
-    reponse1.innerHTML = tabReponses[0][0];
-    reponse1.addEventListener('click', () => {
-        checkReponseSelect(reponse1, reponse2, reponse3, reponse4);
-        isCorrectAnswer = false;
-    })
-}
-// Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
-if (reponse2) {
-    reponse2.innerHTML = tabReponses[0][1];
-    reponse2.addEventListener('click', () => {
-        checkReponseSelect(reponse2, reponse1, reponse3, reponse4);
-        isCorrectAnswer = false;
-    })
-}
-// Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
-if (reponse3) {
-    reponse3.innerHTML = tabReponses[0][2];
-    reponse3.addEventListener('click', () => {
-        checkReponseSelect(reponse3, reponse2, reponse1, reponse4);
-        isCorrectAnswer = true;
-    })
-}
-// Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
-if (reponse4) {
-    reponse4.innerHTML = tabReponses[0][3];
-    reponse4.addEventListener('click', () => {
-        checkReponseSelect(reponse4, reponse2, reponse3, reponse1);
-        isCorrectAnswer = false;
-    })
-}
+valider?.addEventListener('click', () => {    
+    if (answerIsSelected == true) {
+    check();
+    next();
+    changeAnswer();
+    }
+})
 
 /*----------
 FONCTIONS
 ---------- */
 
-// Cette fonction vérifie si une réponse a déja été selectionnée puis change la couleur en conséquence
-function checkReponseSelect (reponseA: HTMLElement | null, reponseB: HTMLElement | null, reponseC: HTMLElement | null, reponseD: HTMLElement | null) {
-    if (reponseB?.classList.contains('reponseSelect')) {
-        reponseB.classList.toggle('reponseSelect');
-        changeColor(reponseA);
+/**
+ * Vérifie si une réponse a déja été selectionnée puis change la couleur en conséquence
+ * @param reponseColor La réponse selectionné (qui doit changer de couleur)
+ */
+function checkReponseSelect (reponseColor: HTMLButtonElement) {
+    for (const reponse of reponses) {
+        if (reponse?.classList.contains('reponseSelect')) {
+            reponse.classList.toggle('reponseSelect')
+        }
     }
-    else if (reponseC?.classList.contains('reponseSelect')) {
-        reponseC.classList.toggle('reponseSelect');
-        changeColor(reponseA);
-    } else if (reponseD?.classList.contains('reponseSelect')) {
-        reponseD.classList.toggle('reponseSelect');
-        changeColor(reponseA);
-    } else {
-        changeColor(reponseA);
-    }
+    reponseColor.classList.toggle('reponseSelect');
 }
-
-// Cette fonction permet de changer la couleur d'une réponse selectionnée
-function changeColor (reponse: HTMLElement | null) {
-    if (reponse) {
-    reponse.classList.add('reponseSelect');
-    reponseIsSelect = true;
-    }
-}
-
-// Cette fonction ajoute du score lors du click du bouton 'valider'
+/**
+ * Ajoute du score pour une bonne réponse
+ */
 function check () {
-    // On verifie qu'une reponse a été selectionée et qu'elle est correct
+    // Verifie qu'une reponse a été selectionée et qu'elle est correct
     if (reponseIsSelect && isCorrectAnswer) {
         scoreNumber += 50;
         if (score) {
@@ -145,8 +114,9 @@ function check () {
         }
     }
 }
-
-// Fonction qui permet de passer a la question suivante
+/**
+ * Permet de passer a la question suivante (change la question, son numero et son image)
+ */
 function next () {
     // Augmente le numero de la question
     if (questionNumber) {
@@ -164,19 +134,14 @@ function next () {
         imgOnRight.src = tabImgOnRight[imageCounter];
     }
 }
-
+/**
+ * Change les réponses pour la question suivante
+ */
 function changeAnswer () {
-    if (reponse1) {
-        reponsesCounter++;
-        reponse1.innerHTML = tabReponses[reponsesCounter][0];
-    }
-    if (reponse2) {
-        reponse2.innerHTML = tabReponses[reponsesCounter][1];
-    }
-    if (reponse3) {
-        reponse3.innerHTML = tabReponses[reponsesCounter][2];
-    }
-    if (reponse4) {
-        reponse4.innerHTML = tabReponses[reponsesCounter][3];
+    let j = 0;
+    reponsesCounter++;
+    for (const reponse of reponses) {
+        reponse.innerHTML = tabReponses[reponsesCounter][j];
+        j++;
     }
 }
