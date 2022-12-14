@@ -4,6 +4,11 @@ IMPORT
 
 import guts from "/assets/guts.webp";
 import dragonball from "/assets/dragon-ball.jpeg";
+import narutoTome from "/assets/naruto-tome.jpeg";
+import kirua from "/assets/kirua.jpeg";
+import bleach from "/assets/bleach.png";
+import fma from "/assets/fma.jpeg";
+import signe1 from "/assets/alphonse1.webp";
 
 /*----------
 VARIABLES
@@ -28,21 +33,31 @@ let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
 // Array
-let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?']
-let tabImgOnRight: string[] = [guts, dragonball];
+let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakutō de Ichigo ?', 'Quel signe se cache dans l\'armure de Alphonse ?']
+let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma];
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
     ['1979', '1982', '1984', '1988'],
-    ['', '', '', ''],
-    ['', '', '', ''],
-    ['', '', '', ''],
-    ['', '', '', ''],
+    ['500 000', '1 300 000', '10 000 000', '250 000 000'],
+    ['Miruki', 'Irumi', 'Aruka', 'Karuto'],
+    ['Wabisuke', 'Hyōrinmaru', 'Hyōrinmaru', 'Zangetsu'],
+    [insertImg(signe1), insertImg(signe1), '', ''],
     ['', '', '', ''],
     ['', '', '', ''],
     ['', '', '', ''],
     ['', '', '', '']
 ];
-let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '', '', '', '', '', '', '', '']
+let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', '', '', '', '', '']
+
+/**
+ * Insere l'image dans le tableau de réponse
+ * @param src L'image a insérer
+ * @returns Le code HTML de l'image
+ */
+function insertImg(src:string) {
+    let img = `<img src="${src}" style="widht: 100px; height: 100px">`;
+    return(img);
+}
 
 /*----------
 CONDITIONS
@@ -79,6 +94,7 @@ for (const reponse of reponses) {
     i++;
 }
 // Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
+// FAIRE UNE CONDITION POUR EMPECHER LE PASSAGE A LA QUESTION SUIVANTE SI IL N'Y A PLUS DE QUESTIONS
 valider?.addEventListener('click', () => {
     if (answerIsSelected == true) {
         check();
