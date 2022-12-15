@@ -1,3 +1,6 @@
+// PROBLEME LORSQUON CLIQUE 2 FOIS SUR VALIDER
+// IMPOSSIBLE DE COMPARER 2 valeurs d'img
+
 /*----------
 IMPORT
 ---------- */
@@ -38,6 +41,7 @@ let goodAnswerCounter: number = 0;
 // Array
 let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakutō de Ichigo ?', 'Quel signe se cache dans l\'armure de Alphonse ?']
 let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma];
+
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
     ['1979', '1982', '1984', '1988'],
@@ -51,16 +55,6 @@ let tabReponses: string[][] = [
     ['', '', '', '']
 ];
 let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), '', '', '', '']
-
-/**
- * Insere l'image dans le tableau de réponse
- * @param src L'image a insérer
- * @returns Le code HTML de l'image
- */
-function insertImg(src:string) {
-    let img = `<img src="${src}" style="widht: 100px; height: 100px">`;
-    return(img);
-}
 
 /*----------
 CONDITIONS
@@ -89,7 +83,10 @@ for (const reponse of reponses) {
         checkReponseSelect(reponse);
         if (reponse.textContent == tabGoodAnswer[goodAnswerCounter]) {
             isCorrectAnswer = true;
-        } else {
+        } else if (reponse.classList.contains('goud')) {
+            isCorrectAnswer = true;
+        }
+         else {
             isCorrectAnswer = false;
         }
         answerIsSelected = true;
@@ -112,6 +109,14 @@ valider?.addEventListener('click', () => {
 FONCTIONS
 ---------- */
 
+/**
+ * Insere l'image dans le tableau de réponse
+ * @param src L'image a insérer
+ * @returns Le code HTML de l'image
+ */
+function insertImg(src:string) {
+    return(`<img src="${src}" style="widht: 100px; height: 100px">`);
+}
 
 /**
  * Elle porte bien son nom celle-la
@@ -129,9 +134,10 @@ function removeClass() {
  */
 function AnswerCheckColor() {
     for (const reponse of reponses) {
-        if (reponse.textContent == tabGoodAnswer[goodAnswerCounter]) {
+        if (reponse.textContent == tabGoodAnswer[goodAnswerCounter] || reponse.classList.contains('goud')) {
             reponse.classList.add('reponseGood');
-        } else {
+        }
+        else {
             reponse.classList.add('reponseBad');
         }
     }
@@ -177,6 +183,9 @@ function next() {
     if (question) {
         questionCounter++;
         question.innerHTML = tabQuestions[questionCounter];
+        if (tabQuestions[questionCounter] == tabQuestions[5]) {
+            reponses[0].classList.add('goud');
+        }
     }
     // Affiche l'image suivante
     if (imgOnRight) {
