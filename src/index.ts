@@ -1,5 +1,4 @@
 // PROBLEME LORSQUON CLIQUE 2 FOIS SUR VALIDER
-// IMPOSSIBLE DE COMPARER 2 valeurs d'img
 
 /*----------
 IMPORT
@@ -39,7 +38,7 @@ let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
 // Array
-let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakutō de Ichigo ?', 'Quel signe se cache dans l\'armure de Alphonse ?']
+let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakutō de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?']
 let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma];
 
 let tabReponses: string[][] = [
@@ -204,4 +203,5 @@ function changeAnswer() {
         reponse.innerHTML = tabReponses[reponsesCounter][j];
         j++;
     }
+    answerIsSelected = false;
 }
