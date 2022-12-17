@@ -1,9 +1,10 @@
 body {
     margin: 0 auto;
     background-color: rgb(200, 200, 200);
+    font-family: 'Permanent Marker', cursive;
 }
-h1, h2 {
-    font-size: 2em;
+.Ttop {
+    font-size: 6rem;
 }
 .logo {
     width: 20%;
@@ -35,7 +36,8 @@ h1, h2 {
 .reponseBad {
     background-color: rgb(207, 41, 41);
 }
-@media (max-width: 500px) {
+
+@media (max-width: 800px) {
     .imgOnRight {
         display: none;
     }
