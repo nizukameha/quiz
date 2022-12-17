@@ -98,9 +98,9 @@ valider?.addEventListener('click', () => {
     if (answerIsSelected == true) {
         check();
         AnswerCheckColor();
-        setTimeout(next, 3000, goodAnswerCounter++, 3000);
-        setTimeout(changeAnswer, 3000);
-        setTimeout(removeClass, 3000);
+        setTimeout(next, 2000, goodAnswerCounter++, 2000);
+        setTimeout(changeAnswer, 2000);
+        setTimeout(removeClass, 2000);
     }
 })
 
