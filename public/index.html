@@ -22,25 +22,36 @@
             <section class="row m-5 d-flex align-items-center">
                 <div class="col-8 text-center d-flex justify-content-around align-items-center m-auto">
                     <h2>SCORE : <span class="score"></span></h2>
-                    <a href="https://axelreviron.netlify.app/"><img src="https://axelreviron.netlify.app/img/logo-h-purple-fonce.webp" class="logo" alt="logo"></a>
+                    <a href="https://axelreviron.netlify.app/"><img
+                            src="https://axelreviron.netlify.app/img/logo-h-purple-fonce.webp" class="logo"
+                            alt="logo"></a>
                     <h2><span class="questionNumber">1</span>/10</h2>
                 </div>
             </section>
-            <div class="col-10 mainSection p-5 d-xl-flex m-auto">
-                <div class="col-12 col-xl-8">
-                    <h2 class="col-10 m-auto p-4 text-center"><span class="question"></span></h2>
-                    <div
-                        class="col-10 m-auto pb-5 d-flex flex-row justify-content-center flex-wrap text-center answers">
-                        <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
-                        <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
-                        <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
-                        <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
-                        <button class="col-12 col-lg-6 btn btn-primary btn-lg valider" type="button">Valider</button>
+            <div class="answers">
+                <div class="col-10 mainSection p-5 d-xl-flex m-auto">
+                    <div class="col-12 col-xl-8">
+                        <h2 class="col-10 m-auto p-4 text-center"><span class="question"></span></h2>
+                        <div class="col-10 m-auto pb-5 d-flex flex-row justify-content-center flex-wrap text-center ">
+                            <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
+                            <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
+                            <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
+                            <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 reponse"></button>
+                            <button class="col-12 col-lg-6 btn btn-primary btn-lg valider"
+                                type="button">Valider</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="/assets/guts.webp" alt="img question" class="imgOnRight" style="width: 80%;">
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <img src="/assets/guts.webp" alt="img question" class="imgOnRight" style="width: 80%;">
-                </div>
+            </div>
+            <div class="col-10 m-auto text-center divTheme">
+                <h2 class="col-10 m-auto p-4 text-center">Quel theme ?</h2>
+                <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 themeAnime">Anime</button>
+                <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 themeSpace">Espace</button>
+                <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 themeCar">Voiture</button>
+                <button type="button" class="col-lg-4 mx-5 my-5 btn btn-lg col-12 themeRap">RAP</button>
             </div>
         </div>
     </main>
