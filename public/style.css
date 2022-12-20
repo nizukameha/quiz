@@ -13,11 +13,11 @@ body {
     background-color: white;
     border-radius: 5%;
 }
-.reponse {
+.reponse, .themeAnime, .themeSpace, .themeCar, .themeRap {
     background-color: grey;
     color: white;
 }
-.reponse:hover {
+.reponse:hover, .themeAnime:hover, .themeSpace:hover, .themeCar:hover, .themeRap:hover {
     background-color: rgb(49, 108, 244);
     color: white
 }
