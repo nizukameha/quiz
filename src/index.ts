@@ -14,6 +14,7 @@ import signe1 from "/assets/alphonse1.webp";
 import signe2 from "/assets/alphonse2.jpeg";
 import signe3 from "/assets/alphonse3.webp";
 import signe4 from "/assets/alphonse4.png";
+import subaru from "/assets/subaru-rally.jpg";
 
 /*----------
 VARIABLES
@@ -26,6 +27,12 @@ let reponses = document.querySelectorAll<HTMLButtonElement>('.reponse');
 let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
 let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
+let themeAnime = document.querySelector<HTMLButtonElement>('.themeAnime');
+let themeSpace = document.querySelector<HTMLButtonElement>('.themeSpace');
+let themeCar = document.querySelector<HTMLButtonElement>('.themeCar');
+let themeRap = document.querySelector<HTMLButtonElement>('.themeRap');
+let divAnswers = document.querySelector<HTMLElement>('.answers');
+let divTheme = document.querySelector<HTMLElement>('.divTheme');
 // Boolean
 let isCorrectAnswer: boolean = false;
 let answerIsSelected: boolean = false;
@@ -38,15 +45,14 @@ let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
 // Array
-let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakutō de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?']
+let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?']
 let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma];
-
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
     ['1979', '1982', '1984', '1988'],
     ['500 000', '1 300 000', '10 000 000', '250 000 000'],
     ['Miruki', 'Irumi', 'Aruka', 'Karuto'],
-    ['Wabisuke', 'Hyōrinmaru', 'Engetsu', 'Zangetsu'],
+    ['Wabisuke', 'Hyorinmaru', 'Engetsu', 'Zangetsu'],
     [insertImg(signe1), insertImg(signe2), insertImg(signe3), insertImg(signe4)],
     ['', '', '', ''],
     ['', '', '', ''],
@@ -54,6 +60,27 @@ let tabReponses: string[][] = [
     ['', '', '', '']
 ];
 let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), '', '', '', '']
+// THEME ESPACE
+let tabQuestionsSpace: string[] = ['La premiere question de l\'espace ?'];
+let tabReponsesSpace: string[][] = [
+    ['Réponse1', 'Réponse2', 'Réponse3', 'Réponse4'],
+    []
+];
+let tabImgOnRightSpace: string[] = [];
+// THEME VOITURE
+let tabQuestionsCar: string[] = ['La premiere question voiture ?'];
+let tabReponsesCar: string[][] = [
+    ['Subaru', 'Réponse2', 'Réponse3', 'Réponse4'],
+    []
+];
+let tabImgOnRightCar: string[] = [];
+// THEME RAP
+let tabQuestionsRap: string[] = ['La premiere question RAP ?'];
+let tabReponsesRap: string[][] = [
+    ['RAP', 'Réponse2', 'Réponse3', 'Réponse4'],
+    []
+];
+let tabImgOnRightRap: string[] = [];
 
 /*----------
 CONDITIONS
@@ -75,10 +102,67 @@ if (question) {
 if (score) {
     score.innerHTML = scoreNumber + '';
 }
+
+// Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
+// FAIRE UNE CONDITION POUR EMPECHER LE PASSAGE A LA QUESTION SUIVANTE SI IL N'Y A PLUS DE QUESTIONS
+// BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
+// CHANGER POLICE ECRITURE EN FONCTION DU THEME
+// CHANGER PHOTO EN FONCTION DU THEME
+valider?.addEventListener('click', () => {
+    if (answerIsSelected == true) {
+        check();
+        AnswerCheckColor();
+        setTimeout(next, 2000, goodAnswerCounter++, 2000);
+        setTimeout(changeAnswerOnValidate, 2000);
+        setTimeout(removeClass, 2000);
+    }
+})
+// De base les questions sont cachées
+if (divAnswers) {
+    divAnswers.style.display = 'none';
+}
+// Lorsqu'on clique sut un theme les questions correspondantes s'affichent
+themeAnime?.addEventListener('click', () => {
+    if (divAnswers && divTheme) {
+        divAnswers.style.display = 'block';
+        divTheme.style.display = 'none';
+        changeAnswer(tabReponses);
+    }
+})
+let isThemeSpace: boolean = false;
+themeSpace?.addEventListener('click', () => {
+    if (divAnswers && divTheme && question) {
+        divAnswers.style.display = 'block';
+        divTheme.style.display = 'none';
+        question.innerHTML = tabQuestionsSpace[questionCounter];
+        isThemeSpace = true;
+        changeAnswer(tabReponsesSpace);
+    }
+})
+let isThemeCar: boolean = false;
+themeCar?.addEventListener('click', () => {
+    if (divAnswers && divTheme && question) {
+        divAnswers.style.display = 'block';
+        divTheme.style.display = 'none';
+        question.innerHTML = tabQuestionsCar[questionCounter];
+        isThemeCar = true;
+        changeAnswer(tabReponsesCar);
+    }
+})
+let isThemeRap: boolean = false;
+themeRap?.addEventListener('click', () => {
+    if (divAnswers && divTheme && question) {
+        divAnswers.style.display = 'block';
+        divTheme.style.display = 'none';
+        question.innerHTML = tabQuestionsRap[questionCounter];
+        isThemeRap = true;
+        changeAnswer(tabReponsesRap);
+    }
+})
+
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 for (const reponse of reponses) {
-    reponse.innerHTML = tabReponses[0][i];
-    reponse.addEventListener('click', () => {
+        reponse.addEventListener('click', () => {
         checkReponseSelect(reponse);
         if (reponse.textContent == tabGoodAnswer[goodAnswerCounter]) {
             isCorrectAnswer = true;
@@ -90,19 +174,7 @@ for (const reponse of reponses) {
         }
         answerIsSelected = true;
     })
-    i++;
 }
-// Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
-// FAIRE UNE CONDITION POUR EMPECHER LE PASSAGE A LA QUESTION SUIVANTE SI IL N'Y A PLUS DE QUESTIONS
-valider?.addEventListener('click', () => {
-    if (answerIsSelected == true) {
-        check();
-        AnswerCheckColor();
-        setTimeout(next, 2000, goodAnswerCounter++, 2000);
-        setTimeout(changeAnswer, 2000);
-        setTimeout(removeClass, 2000);
-    }
-})
 
 /*----------
 FONCTIONS
@@ -140,6 +212,20 @@ function AnswerCheckColor() {
             reponse.classList.add('reponseBad');
         }
     }
+}
+
+/**
+ * Cette fonction affiche les réponses qui correspondent au theme
+ * @param tabRep Le tableau de réponse qu'on doit afficher
+ */
+function changeAnswer(tabRep:string[][]) {
+    let j = 0;
+    for (const reponse of reponses) {
+        reponse.innerHTML = tabRep[reponsesCounter][j];
+    j++;
+    }
+    reponsesCounter++;
+    answerIsSelected = false;
 }
 
 /**
@@ -196,7 +282,7 @@ function next() {
 /**
  * Change les réponses pour la question suivante
  */
-function changeAnswer() {
+function changeAnswerOnValidate() {
     let j = 0;
     reponsesCounter++;
     for (const reponse of reponses) {
