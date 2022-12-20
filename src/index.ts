@@ -14,7 +14,7 @@ import signe1 from "/assets/alphonse1.webp";
 import signe2 from "/assets/alphonse2.jpeg";
 import signe3 from "/assets/alphonse3.webp";
 import signe4 from "/assets/alphonse4.png";
-import subaru from "/assets/subaru-rally.jpg";
+import subaru from "/assets/subaru-rally.jpeg";
 
 /*----------
 VARIABLES
@@ -27,12 +27,6 @@ let reponses = document.querySelectorAll<HTMLButtonElement>('.reponse');
 let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
 let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
-let themeAnime = document.querySelector<HTMLButtonElement>('.themeAnime');
-let themeSpace = document.querySelector<HTMLButtonElement>('.themeSpace');
-let themeCar = document.querySelector<HTMLButtonElement>('.themeCar');
-let themeRap = document.querySelector<HTMLButtonElement>('.themeRap');
-let divAnswers = document.querySelector<HTMLElement>('.answers');
-let divTheme = document.querySelector<HTMLElement>('.divTheme');
 // Boolean
 let isCorrectAnswer: boolean = false;
 let answerIsSelected: boolean = false;
@@ -60,32 +54,15 @@ let tabReponses: string[][] = [
     ['', '', '', '']
 ];
 let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), '', '', '', '']
-// THEME ESPACE
-let tabQuestionsSpace: string[] = ['La premiere question de l\'espace ?'];
-let tabReponsesSpace: string[][] = [
-    ['Réponse1', 'Réponse2', 'Réponse3', 'Réponse4'],
-    []
-];
-let tabImgOnRightSpace: string[] = [];
-// THEME VOITURE
-let tabQuestionsCar: string[] = ['La premiere question voiture ?'];
-let tabReponsesCar: string[][] = [
-    ['Subaru', 'Réponse2', 'Réponse3', 'Réponse4'],
-    []
-];
-let tabImgOnRightCar: string[] = [];
-// THEME RAP
-let tabQuestionsRap: string[] = ['La premiere question RAP ?'];
-let tabReponsesRap: string[][] = [
-    ['RAP', 'Réponse2', 'Réponse3', 'Réponse4'],
-    []
-];
-let tabImgOnRightRap: string[] = [];
 
 /*----------
 CONDITIONS
 ---------- */
 
+for (const reponse of reponses) {
+    reponse.innerHTML = tabReponses[0][i];
+    i++;
+}
 // Affiche l'image correspondant a la question actuelle
 if (imgOnRight) {
     imgOnRight.src = tabImgOnRight[imageCounter];
@@ -108,6 +85,7 @@ if (score) {
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
 // CHANGER POLICE ECRITURE EN FONCTION DU THEME
 // CHANGER PHOTO EN FONCTION DU THEME
+// TIMER QUI DECLENCHE LES ACTIONS DE VALIDER SANS CLIQUER DESSUS
 valider?.addEventListener('click', () => {
     if (answerIsSelected == true) {
         check();
@@ -115,48 +93,6 @@ valider?.addEventListener('click', () => {
         setTimeout(next, 2000, goodAnswerCounter++, 2000);
         setTimeout(changeAnswerOnValidate, 2000);
         setTimeout(removeClass, 2000);
-    }
-})
-// De base les questions sont cachées
-if (divAnswers) {
-    divAnswers.style.display = 'none';
-}
-// Lorsqu'on clique sut un theme les questions correspondantes s'affichent
-themeAnime?.addEventListener('click', () => {
-    if (divAnswers && divTheme) {
-        divAnswers.style.display = 'block';
-        divTheme.style.display = 'none';
-        changeAnswer(tabReponses);
-    }
-})
-let isThemeSpace: boolean = false;
-themeSpace?.addEventListener('click', () => {
-    if (divAnswers && divTheme && question) {
-        divAnswers.style.display = 'block';
-        divTheme.style.display = 'none';
-        question.innerHTML = tabQuestionsSpace[questionCounter];
-        isThemeSpace = true;
-        changeAnswer(tabReponsesSpace);
-    }
-})
-let isThemeCar: boolean = false;
-themeCar?.addEventListener('click', () => {
-    if (divAnswers && divTheme && question) {
-        divAnswers.style.display = 'block';
-        divTheme.style.display = 'none';
-        question.innerHTML = tabQuestionsCar[questionCounter];
-        isThemeCar = true;
-        changeAnswer(tabReponsesCar);
-    }
-})
-let isThemeRap: boolean = false;
-themeRap?.addEventListener('click', () => {
-    if (divAnswers && divTheme && question) {
-        divAnswers.style.display = 'block';
-        divTheme.style.display = 'none';
-        question.innerHTML = tabQuestionsRap[questionCounter];
-        isThemeRap = true;
-        changeAnswer(tabReponsesRap);
     }
 })
 
@@ -224,7 +160,6 @@ function changeAnswer(tabRep:string[][]) {
         reponse.innerHTML = tabRep[reponsesCounter][j];
     j++;
     }
-    reponsesCounter++;
     answerIsSelected = false;
 }
 
