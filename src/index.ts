@@ -14,7 +14,9 @@ import signe1 from "/assets/alphonse1.webp";
 import signe2 from "/assets/alphonse2.jpeg";
 import signe3 from "/assets/alphonse3.webp";
 import signe4 from "/assets/alphonse4.png";
-import subaru from "/assets/subaru-rally.jpeg";
+import uchiyamada from "/assets/uchiyamada.jpeg";
+import livai from "/assets/livai.jpeg";
+import pokemon from "/assets/pokemon.png";
 
 /*----------
 VARIABLES
@@ -39,8 +41,8 @@ let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
 // Array
-let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?']
-let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma];
+let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?', 'Quelle est la voiture du sous-directeur Uchiyamada ?', 'Quel est le titre de Livai au sein du bataillon d\'exploration ?', '9', '10']
+let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma, uchiyamada, livai];
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
     ['1979', '1982', '1984', '1988'],
@@ -48,12 +50,12 @@ let tabReponses: string[][] = [
     ['Miruki', 'Irumi', 'Aruka', 'Karuto'],
     ['Wabisuke', 'Hyorinmaru', 'Engetsu', 'Zangetsu'],
     [insertImg(signe1), insertImg(signe2), insertImg(signe3), insertImg(signe4)],
-    ['', '', '', ''],
-    ['', '', '', ''],
-    ['', '', '', ''],
+    ['Toyota', 'Honda', 'Cresta', 'Nissan'],
+    ['Major', 'Caporal-chef', 'Lieutenant', 'Capitaine'],
+    ['Cochignon', 'Mammochon', 'Limoute', 'Momoute'],
     ['', '', '', '']
 ];
-let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), '', '', '', '']
+let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), 'Cresta', 'Caporal-chef', 'Cochignon', '']
 
 /*----------
 CONDITIONS
@@ -83,16 +85,16 @@ if (score) {
 // Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
 // FAIRE UNE CONDITION POUR EMPECHER LE PASSAGE A LA QUESTION SUIVANTE SI IL N'Y A PLUS DE QUESTIONS
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
-// CHANGER POLICE ECRITURE EN FONCTION DU THEME
-// CHANGER PHOTO EN FONCTION DU THEME
 // TIMER QUI DECLENCHE LES ACTIONS DE VALIDER SANS CLIQUER DESSUS
 valider?.addEventListener('click', () => {
-    if (answerIsSelected == true) {
+    if (answerIsSelected == true && questionCounter < 9) {
         check();
         AnswerCheckColor();
         setTimeout(next, 2000, goodAnswerCounter++, 2000);
         setTimeout(changeAnswerOnValidate, 2000);
         setTimeout(removeClass, 2000);
+    } else if (questionCounter == 10) {
+        alert('Fin du quiz !')
     }
 })
 
@@ -143,6 +145,7 @@ function AnswerCheckColor() {
     for (const reponse of reponses) {
         if (reponse.textContent == tabGoodAnswer[goodAnswerCounter] || reponse.classList.contains('goud')) {
             reponse.classList.add('reponseGood');
+            reponse.classList.remove('goud');
         }
         else {
             reponse.classList.add('reponseBad');
