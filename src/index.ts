@@ -17,6 +17,7 @@ import signe4 from "/assets/alphonse4.png";
 import uchiyamada from "/assets/uchiyamada.jpeg";
 import livai from "/assets/livai.jpeg";
 import pokemon from "/assets/pokemon.png";
+import cowboy from "/assets/cowboy.jpeg";
 
 /*----------
 VARIABLES
@@ -41,8 +42,8 @@ let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
 // Array
-let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?', 'Quelle est la voiture du sous-directeur Uchiyamada ?', 'Quel est le titre de Livai au sein du bataillon d\'exploration ?', '9', '10']
-let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma, uchiyamada, livai];
+let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?', 'Quelle est la voiture du sous-directeur Uchiyamada ?', 'Quel est le titre de Livai au sein du bataillon d\'exploration ?', 'Comment s\'appelle ce Pokemon ?', 'Qui est ce personnage de Cowboy Bebop ?']
+let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma, uchiyamada, livai, pokemon, cowboy];
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
     ['1979', '1982', '1984', '1988'],
@@ -53,9 +54,9 @@ let tabReponses: string[][] = [
     ['Toyota', 'Honda', 'Cresta', 'Nissan'],
     ['Major', 'Caporal-chef', 'Lieutenant', 'Capitaine'],
     ['Cochignon', 'Mammochon', 'Limoute', 'Momoute'],
-    ['', '', '', '']
+    ['Grimmjow', 'Bebop', 'Spike', 'Jow']
 ];
-let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), 'Cresta', 'Caporal-chef', 'Cochignon', '']
+let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), 'Cresta', 'Caporal-chef', 'Cochignon', 'Spike']
 
 /*----------
 CONDITIONS
@@ -87,14 +88,16 @@ if (score) {
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
 // TIMER QUI DECLENCHE LES ACTIONS DE VALIDER SANS CLIQUER DESSUS
 valider?.addEventListener('click', () => {
-    if (answerIsSelected == true && questionCounter < 9) {
+    if (answerIsSelected == true) {
         check();
         AnswerCheckColor();
-        setTimeout(next, 2000, goodAnswerCounter++, 2000);
-        setTimeout(changeAnswerOnValidate, 2000);
-        setTimeout(removeClass, 2000);
-    } else if (questionCounter == 10) {
-        alert('Fin du quiz !')
+        if(questionCounter < 9) {
+            setTimeout(next, 2000, goodAnswerCounter++, 2000);
+            setTimeout(changeAnswerOnValidate, 2000);
+            setTimeout(removeClass, 2000);
+        } else {
+            alert('Fin du quiz !')
+        }
     }
 })
 
@@ -124,7 +127,7 @@ FONCTIONS
  * @returns Le code HTML de l'image
  */
 function insertImg(src:string) {
-    return(`<img src="${src}" style="widht: 100px; height: 100px">`);
+    return(`<img src="${src}" style="widht: 60px; height: 60px">`);
 }
 
 /**
