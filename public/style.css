@@ -39,7 +39,9 @@ body {
 .score, .questionNumber {
     color: rgb(49, 108, 244);
 }
-
+.imgOnRight {
+    border-radius: 2%;
+}
 @media (max-width: 1200px) {
     .imgOnRight {
         display: none;
