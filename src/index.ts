@@ -42,7 +42,7 @@ let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
 // Array
-let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combien de tomes de Naruto ont été vendus depuis sa sortie ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?', 'Quelle est la voiture du sous-directeur Uchiyamada ?', 'Quel est le titre de Livai au sein du bataillon d\'exploration ?', 'Comment s\'appelle ce Pokemon ?', 'Qui est ce personnage de Cowboy Bebop ?']
+let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combiem de tomes de Naruto ont été vendus ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?', 'Quelle est la voiture de Uchiyamada ?', 'Quel est le titre de Livai au sein du bataillon d\'exploration ?', 'Comment s\'appelle ce Pokemon ?', 'Qui est ce personnage de Cowboy Bebop ?']
 let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma, uchiyamada, livai, pokemon, cowboy];
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
@@ -87,6 +87,7 @@ if (score) {
 // FAIRE UNE CONDITION POUR EMPECHER LE PASSAGE A LA QUESTION SUIVANTE SI IL N'Y A PLUS DE QUESTIONS
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
 // TIMER QUI DECLENCHE LES ACTIONS DE VALIDER SANS CLIQUER DESSUS
+// PAGE DE FIN DE QUIZ
 valider?.addEventListener('click', () => {
     if (answerIsSelected == true) {
         check();
