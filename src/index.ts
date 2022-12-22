@@ -30,6 +30,7 @@ let reponses = document.querySelectorAll<HTMLButtonElement>('.reponse');
 let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
 let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
+let timeHTML = document.querySelector<HTMLElement>('.time');
 // Boolean
 let isCorrectAnswer: boolean = false;
 let answerIsSelected: boolean = false;
@@ -41,6 +42,7 @@ let imageCounter: number = 0;
 let reponsesCounter: number = 0;
 let i = 0;
 let goodAnswerCounter: number = 0;
+let timeCounter = 15;
 // Array
 let tabQuestions: string[] = ['Qui est l\'auteur de Berserk ?', 'Quand a été publié Dragon Ball ?', 'Combiem de tomes de Naruto ont été vendus ?', 'Comment s\'appelle le frere aîné de Kirua ?', 'Quel est le nom du Zanpakuto de Ichigo ?', 'Quel signe se cache dans l\'armure d\'Alphonse ?', 'Quelle est la voiture de Uchiyamada ?', 'Quel est le titre de Livai au sein du bataillon d\'exploration ?', 'Comment s\'appelle ce Pokemon ?', 'Qui est ce personnage de Cowboy Bebop ?']
 let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma, uchiyamada, livai, pokemon, cowboy];
@@ -82,9 +84,13 @@ if (question) {
 if (score) {
     score.innerHTML = scoreNumber + '';
 }
+if (timeHTML) {
+    timeHTML.innerHTML = String(timeCounter);
+}
+
+timer();
 
 // Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
-// FAIRE UNE CONDITION POUR EMPECHER LE PASSAGE A LA QUESTION SUIVANTE SI IL N'Y A PLUS DE QUESTIONS
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
 // TIMER QUI DECLENCHE LES ACTIONS DE VALIDER SANS CLIQUER DESSUS
 // PAGE DE FIN DE QUIZ
@@ -92,26 +98,38 @@ valider?.addEventListener('click', () => {
     if (answerIsSelected == true) {
         check();
         AnswerCheckColor();
-        if(questionCounter < 9) {
+        if (questionCounter < 9) {
             setTimeout(next, 2000, goodAnswerCounter++, 2000);
             setTimeout(changeAnswerOnValidate, 2000);
             setTimeout(removeClass, 2000);
         } else {
-            alert('Fin du quiz !')
+            //Fin du quiz
+            //check();
+            //AnswerCheckColor();
+            //setTimeout
+            for (const reponse of reponses) {
+                reponse.style.display = 'none';
+            }
+            if (valider) {
+                valider.style.display = 'none';
+            }
+            if (question) {
+                question.style.display = 'none';
+            }
         }
     }
 })
 
 // Lors du clic sur une réponse on apelle une fonction pour changer sa couleur
 for (const reponse of reponses) {
-        reponse.addEventListener('click', () => {
+    reponse.addEventListener('click', () => {
         checkReponseSelect(reponse);
         if (reponse.textContent == tabGoodAnswer[goodAnswerCounter]) {
             isCorrectAnswer = true;
         } else if (reponse.classList.contains('goud')) {
             isCorrectAnswer = true;
         }
-         else {
+        else {
             isCorrectAnswer = false;
         }
         answerIsSelected = true;
@@ -123,12 +141,49 @@ FONCTIONS
 ---------- */
 
 /**
+ * Déclenche un timer de 15s, lorsqu'il arrive a 0. On passe a la question suivante
+ */
+function timer() {
+    let monInterval = setInterval(chrono, 1000);
+        function chrono() {
+            valider?.addEventListener('click', () => {
+                if (answerIsSelected == true) {
+                    clearInterval(monInterval);
+                }
+            });
+            timeCounter--;
+            if (timeHTML) {
+                timeHTML.innerHTML = String(timeCounter);
+            }
+            if (timeCounter == 0) {
+                clearInterval(monInterval);
+                AnswerCheckColor();
+                if (questionCounter < 9) {
+                    setTimeout(next, 2000, goodAnswerCounter++, 2000);
+                    setTimeout(changeAnswerOnValidate, 2000);
+                    setTimeout(removeClass, 2000);
+                } else {
+                    for (const reponse of reponses) {
+                        reponse.style.display = 'none';
+                    }
+                    if (valider) {
+                        valider.style.display = 'none';
+                    }
+                    if (question) {
+                        question.style.display = 'none';
+                    }
+                }
+            }
+        }
+}
+
+/**
  * Insere l'image dans le tableau de réponse
  * @param src L'image a insérer
  * @returns Le code HTML de l'image
  */
-function insertImg(src:string) {
-    return(`<img src="${src}" style="widht: 60px; height: 60px">`);
+function insertImg(src: string) {
+    return (`<img src="${src}" style="widht: 60px; height: 60px">`);
 }
 
 /**
@@ -161,12 +216,13 @@ function AnswerCheckColor() {
  * Cette fonction affiche les réponses qui correspondent au theme
  * @param tabRep Le tableau de réponse qu'on doit afficher
  */
-function changeAnswer(tabRep:string[][]) {
+function changeAnswer(tabRep: string[][]) {
     let j = 0;
     for (const reponse of reponses) {
         reponse.innerHTML = tabRep[reponsesCounter][j];
-    j++;
+        j++;
     }
+    
     answerIsSelected = false;
 }
 
@@ -232,4 +288,6 @@ function changeAnswerOnValidate() {
         j++;
     }
     answerIsSelected = false;
+    timeCounter = 16;
+    timer();
 }
