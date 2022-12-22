@@ -4,6 +4,7 @@ body {
     font-family: 'Permanent Marker', cursive;
     background-image: url('/assets/planche.webp');
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 .top {
