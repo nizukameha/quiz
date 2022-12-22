@@ -3,9 +3,10 @@ body {
     background-color: rgb(200, 200, 200);
     font-family: 'Permanent Marker', cursive;
     background-image: url('/assets/planche.webp');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
     background-size: cover;
+    height: 100vh;
 }
 .top {
     border-radius: 5%;
@@ -45,7 +46,7 @@ body {
 .reponseBad {
     background-color: rgb(207, 41, 41);
 }
-.score, .questionNumber {
+.score, .questionNumber, .time {
     color: rgb(49, 108, 244);
 }
 .imgOnRight {
