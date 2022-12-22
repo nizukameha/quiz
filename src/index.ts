@@ -25,7 +25,7 @@ VARIABLES
 
 // Query
 let score = document.querySelector<HTMLElement>('.score');
-let valider = document.querySelector<HTMLElement>('.valider');
+let valider = document.querySelector<HTMLButtonElement>('.valider');
 let reponses = document.querySelectorAll<HTMLButtonElement>('.reponse');
 let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
@@ -94,19 +94,20 @@ timer();
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
 // TIMER QUI DECLENCHE LES ACTIONS DE VALIDER SANS CLIQUER DESSUS
 // PAGE DE FIN DE QUIZ
+// SI UNE BONNE REPONSE FONCTIONNE TOUT LE TEMPS AVEC LE TIMER
 valider?.addEventListener('click', () => {
     if (answerIsSelected == true) {
+        if (valider) {
+            valider.disabled = true;
+        }
         check();
         AnswerCheckColor();
         if (questionCounter < 9) {
             setTimeout(next, 2000, goodAnswerCounter++, 2000);
             setTimeout(changeAnswerOnValidate, 2000);
             setTimeout(removeClass, 2000);
+            setTimeout(validerDisabledFalse, 2000);
         } else {
-            //Fin du quiz
-            //check();
-            //AnswerCheckColor();
-            //setTimeout
             for (const reponse of reponses) {
                 reponse.style.display = 'none';
             }
@@ -141,40 +142,52 @@ FONCTIONS
 ---------- */
 
 /**
+ * Le bouton pour valider la réponse est de nouveau disponible
+ */
+function validerDisabledFalse() {
+    if (valider) {
+        valider.disabled = false;
+    }
+}
+
+/**
  * Déclenche un timer de 15s, lorsqu'il arrive a 0. On passe a la question suivante
  */
 function timer() {
     let monInterval = setInterval(chrono, 1000);
-        function chrono() {
-            valider?.addEventListener('click', () => {
-                if (answerIsSelected == true) {
-                    clearInterval(monInterval);
-                }
-            });
-            timeCounter--;
-            if (timeHTML) {
-                timeHTML.innerHTML = String(timeCounter);
-            }
-            if (timeCounter == 0) {
+    function chrono() {
+        valider?.addEventListener('click', () => {
+            if (answerIsSelected == true) {
                 clearInterval(monInterval);
-                AnswerCheckColor();
-                if (questionCounter < 9) {
-                    setTimeout(next, 2000, goodAnswerCounter++, 2000);
-                    setTimeout(changeAnswerOnValidate, 2000);
-                    setTimeout(removeClass, 2000);
-                } else {
-                    for (const reponse of reponses) {
-                        reponse.style.display = 'none';
-                    }
-                    if (valider) {
-                        valider.style.display = 'none';
-                    }
-                    if (question) {
-                        question.style.display = 'none';
-                    }
+            }
+        });
+        timeCounter--;
+        if (timeHTML) {
+            timeHTML.innerHTML = String(timeCounter);
+        }
+        if (timeCounter == 0) {
+            clearInterval(monInterval);
+            if (answerIsSelected == true) {
+                check();
+            }
+            AnswerCheckColor();
+            if (questionCounter < 9) {
+                setTimeout(next, 2000, goodAnswerCounter++, 2000);
+                setTimeout(changeAnswerOnValidate, 2000);
+                setTimeout(removeClass, 2000);
+            } else {
+                for (const reponse of reponses) {
+                    reponse.style.display = 'none';
+                }
+                if (valider) {
+                    valider.style.display = 'none';
+                }
+                if (question) {
+                    question.style.display = 'none';
                 }
             }
         }
+    }
 }
 
 /**
@@ -222,7 +235,7 @@ function changeAnswer(tabRep: string[][]) {
         reponse.innerHTML = tabRep[reponsesCounter][j];
         j++;
     }
-    
+
     answerIsSelected = false;
 }
 
