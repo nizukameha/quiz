@@ -17,10 +17,19 @@ body {
 .logo {
     width: 10rem;
 }
-.mainSection {
+.mainSection, .commencement {
     background-color: rgba(255, 255, 255, 0.495);
     border-radius: 5%;
     height: 75vh;
+}
+.commencement {
+    font-size: 1.5rem;
+}
+.commencement ul {
+    list-style-type: none;
+}
+.commencement p {
+    margin: 2% 15% 2% 15%;
 }
 .reponse {
     background-color: grey;
@@ -51,6 +60,9 @@ body {
 }
 .imgOnRight {
     border-radius: 2%;
+}
+.hide {
+    display: none!important;
 }
 @media (max-width: 1200px) {
     .imgOnRight {
