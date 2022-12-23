@@ -53,7 +53,7 @@ let tabImgOnRight: string[] = [guts, dragonball, narutoTome, kirua, bleach, fma,
 let tabReponses: string[][] = [
     ['Akira Toriyama', 'Eiichiro Oda', 'Masashi Kishimito', 'Kentaro Miura'],
     ['1979', '1982', '1984', '1988'],
-    ['500 000', '1 300 000', '10 000 000', '250 000 000'],
+    ['500 000 000', '10 000 000', '100 000 000', '250 000 000'],
     ['Miruki', 'Irumi', 'Aruka', 'Karuto'],
     ['Wabisuke', 'Hyorinmaru', 'Engetsu', 'Zangetsu'],
     [insertImg(signe1), insertImg(signe2), insertImg(signe3), insertImg(signe4)],
