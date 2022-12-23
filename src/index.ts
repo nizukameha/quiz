@@ -110,7 +110,7 @@ valider?.addEventListener('click', () => {
         }
         check();
         AnswerCheckColor();
-        if (questionCounter < 0) {
+        if (questionCounter < 9) {
             quiz()
         } else {
             quizEnd();
