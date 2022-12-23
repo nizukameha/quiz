@@ -31,6 +31,9 @@ let question = document.querySelector<HTMLElement>('.question');
 let questionNumber = document.querySelector<HTMLElement>('.questionNumber');
 let imgOnRight = document.querySelector<HTMLImageElement>('.imgOnRight');
 let timeHTML = document.querySelector<HTMLElement>('.time');
+let commencer = document.querySelector<HTMLButtonElement>('.commencer');
+let commencement = document.querySelector<HTMLDivElement>('.commencement');
+let mainSection = document.querySelector<HTMLDivElement>('.mainSection');
 // Boolean
 let isCorrectAnswer: boolean = false;
 let answerIsSelected: boolean = false;
@@ -88,7 +91,13 @@ if (timeHTML) {
     timeHTML.innerHTML = String(timeCounter);
 }
 
-timer();
+// Lors du click du btn 
+commencer?.addEventListener('click', () => {
+    commencer?.classList.add('hide')
+    commencement?.classList.add('hide')
+    appear();
+    timer();
+})
 
 // Si 'valider' existe, la fonction 'check' se lance lorsqu'on clique sur le bouton
 // BUG LORSQUON CLIQUE RAPIDEMENT SUR VALIDER
@@ -200,14 +209,27 @@ function insertImg(src: string) {
 }
 
 /**
- * Elle porte bien son nom celle-la
+ * Permet de changer les couleurs des reponses
  */
 function removeClass() {
     for (const reponse of reponses) {
         reponse.classList.remove('reponseGood');
         reponse.classList.remove('reponseSelect');
         reponse.classList.remove('reponseBad');
+        reponse.classList.remove('hide');
     }
+}
+/**
+ * Elle porte bien son nom celle-la
+ */
+function appear() {
+    for (const reponse of reponses) {
+        reponse.classList.remove('hide');
+    }
+    question?.classList.remove('hide');
+    imgOnRight?.classList.remove('hide');
+    valider?.classList.remove('hide');
+    mainSection?.classList.remove('hide');
 }
 
 /**
