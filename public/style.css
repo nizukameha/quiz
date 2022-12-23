@@ -29,7 +29,7 @@ body {
     list-style-type: none;
 }
 .commencement p {
-    margin: 2% 15% 2% 15%;
+    margin: 2% 15% 0% 15%;
 }
 .commencement h2 {
     font-size: 2rem;
@@ -39,15 +39,12 @@ body {
     color: white;
     height: 20%;
 }
-.reponse:hover {
+.reponse:hover, .reponseSelect {
     background-color: rgb(49, 108, 244);
     color: white
 }
 .reponseSelect, .reponseSelect:hover {
     color: white;
-}
-.reponseSelect {
-    background-color: rgb(49, 108, 244);
 }
 .reponseSelect:hover {
     background-color: rgb(41, 93, 207);
@@ -58,7 +55,7 @@ body {
 .reponseBad {
     background-color: rgb(207, 41, 41);
 }
-.score, .questionNumber, .time {
+.score, .questionNumber, .time, .blue {
     color: rgb(49, 108, 244);
 }
 .imgOnRight {
