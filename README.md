@@ -1,9 +1,9 @@
 # Quiz
-Ceci est le second projet de ma formation : _"Développeur et Développeur Web Mobile"_ chez Simplon. Ce quiz a pour theme les animes et les mangas. Je l'ai développé avec Typescript pour créer de l'interraction avec l'utilisateur.
-## Sections
-#### Accueil
+Ceci est le second projet de ma formation : [Développeur et Développeur Web Mobile](https://simplon.co/formation/developpeur-web-et-web-mobile/11) chez Simplon. Ce quiz a pour theme les animes et les mangas. Je l'ai développé avec Typescript pour créer de l'interraction avec l'utilisateur.
+
+### Accueil
 En arrivant sur le site, les regles du quiz sont présentées. Il y a un boutton 'Commencer' qui permet de lancer le quiz.
-#### Questions / Réponses
+### Questions / Réponses
 En haut de la page se situe : 
 - le score
 - le temps
