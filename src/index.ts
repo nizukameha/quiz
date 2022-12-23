@@ -63,6 +63,11 @@ let tabReponses: string[][] = [
     ['Grimmjow', 'Bebop', 'Spike', 'Jow']
 ];
 let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 'Zangetsu', insertImg(signe1), 'Cresta', 'Caporal-chef', 'Cochignon', 'Spike']
+// String
+let endMessage:string = 'Merci d\'avoir participé a mon quiz :)<br>Vous pouvez trouver mes autres projets ici :<br><a href="https://axel-reviron.netlify.app/"><img src="https://axel-reviron.netlify.app/img/logo-h-purple-fonce.webp" alt="portfolio" style="width: 50%; margin-top: 10%;"></a>';
+const endMessageVeryBad = 'Les animes c\'est pas ton truc, mais il est jamais trop tard pour s\'y mettre !';
+const endMessageGood = 'Super score, tu es clairement un fan d\'anime !';
+const endMessageVeryGood = 'Aucune erreur, on a affaire à un vrai Otaku !';
 
 /*----------
 CONDITIONS
@@ -166,7 +171,14 @@ function quizEnd() {
         commencement?.classList.remove('hide');
         if (commencementH2 && commencer && commencementP) {
             commencementH2.innerHTML = 'Fin du quiz !';
-            commencementP.innerHTML = 'Merci d\'avoir participé a mon quiz :)<br>Vous pouvez trouver mes autres projets ici :<br><a href="https://axel-reviron.netlify.app/"><img src="https://axel-reviron.netlify.app/img/logo-h-purple-fonce.webp" alt="portfolio" style="width: 50%; margin-top: 10%;"></a>'
+            if (scoreNumber <= 50) {
+                commencementP.innerHTML = endMessageVeryBad + '<br>' + endMessage;
+            } else if (scoreNumber > 50 && scoreNumber <= 250) {
+                commencementP.innerHTML = endMessageGood + '<br>' + endMessage;
+            }
+            else if (scoreNumber == 500) {
+                commencementP.innerHTML = endMessageVeryGood + '<br>' + endMessage;
+            }
             commencementP.style.marginTop = '10%';
         }
         commencer?.classList.add('hide');
