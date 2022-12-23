@@ -24,13 +24,15 @@ body {
 }
 .commencement {
     font-size: 1.5rem;
-    height: 90vh;
 }
 .commencement ul {
     list-style-type: none;
 }
 .commencement p {
     margin: 2% 15% 2% 15%;
+}
+.commencement h2 {
+    font-size: 2rem;
 }
 .reponse {
     background-color: grey;
@@ -83,5 +85,8 @@ body {
     }
     .question {
         font-size: 1.5rem;
+    }
+    .commencement {
+        height: 100vh;
     }
 }
