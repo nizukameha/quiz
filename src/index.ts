@@ -34,7 +34,7 @@ let commencement = document.querySelector<HTMLDivElement>('.commencement');
 let mainSection = document.querySelector<HTMLDivElement>('.mainSection');
 let commencementH2 = document.querySelector<HTMLHeadingElement>('.commencementH2');
 let commencementUl = document.querySelector<HTMLUListElement>('.commencementUl');
-let commencementP = document.querySelector<HTMLParagraphElement>('.commencementP')
+let commencementP = document.querySelector<HTMLParagraphElement>('.commencementP');
 // Boolean
 let isCorrectAnswer: boolean = false;
 let answerIsSelected: boolean = false;
@@ -110,7 +110,7 @@ valider?.addEventListener('click', () => {
         }
         check();
         AnswerCheckColor();
-        if (questionCounter < 9) {
+        if (questionCounter < 0) {
             quiz()
         } else {
             quizEnd();
@@ -171,6 +171,7 @@ function quizEnd() {
         }
         commencer?.classList.add('hide');
         commencementUl?.classList.add('hide');
+        commencement?.setAttribute('id', 'end');
     }, 1500)
 }
 

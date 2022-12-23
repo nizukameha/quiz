@@ -89,6 +89,9 @@ body {
     .commencement {
         height: 100vh;
     }
+    #end {
+        height: 50vh;
+    }
     body {
         height: 120vh;
     }
