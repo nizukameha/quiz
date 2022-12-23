@@ -26,20 +26,40 @@
                 </div>
             </section>
             <div class="answers">
-                <div class="col-10 mainSection p-5 d-xl-flex m-auto">
+
+                <!-- Cette partie de la page disparait au click du boutton 'Commencer' -->
+                <div class="col-12 d-flex flex-column p-5 commencement">
+                    <h2 class="text-center">Quiz :</h2>
+                    <p>Les questions sont sur les animes et les mangas, certaines sont plus dures que d'autres.
+                        Pour l'instant il y a 10 questions mais à l'avenir il y en aura plus. Voici les règles :
+                    </p>
+                    <ul class="m-5 text-center">
+                        <li>Une bonne réponse rapporte 50 points</li>
+                        <li>15 secondes pour répondre aux questions</li>
+                    </ul>
+                    <button class="col-4 m-auto btn btn-primary btn-lg commencer"
+                        type="button">Commencer</button>
+                </div>
+
+                <div class="col-10 mainSection p-5 d-xl-flex m-auto hide">
                     <div class="col-12 col-xl-8 d-flex align-items-center flex-column">
-                        <h2 class="col-12 m-auto p-xl-4 text-center"><span class="question">La question</span></h2>
+                        <h2 class="col-12 m-auto p-xl-4 text-center"><span class="question hide">La question</span></h2>
                         <div class="col-10 m-auto pb-5 d-flex flex-row justify-content-center flex-wrap text-center ">
-                            <button type="button" class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse"></button>
-                            <button type="button" class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse"></button>
-                            <button type="button" class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse"></button>
-                            <button type="button" class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse"></button>
-                            <button class="col-12 col-xl-6 btn btn-primary btn-lg valider"
+                            <button type="button"
+                                class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse hide"></button>
+                            <button type="button"
+                                class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse hide"></button>
+                            <button type="button"
+                                class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse hide"></button>
+                            <button type="button"
+                                class="col-xl-4 mx-xl-5 my-3 my-xl-5 btn btn-lg col-12 reponse hide"></button>
+                            <button class="col-12 col-xl-6 btn btn-primary btn-lg valider hide"
                                 type="button">Valider</button>
                         </div>
+                        
                     </div>
                     <div class="col-12 col-md-4 d-flex align-items-center">
-                        <img src="/assets/guts.webp" alt="img question" class="imgOnRight" style="width: 80%;">
+                        <img src="/assets/guts.webp" alt="img question" class="imgOnRight hide" style="width: 80%;">
                     </div>
                 </div>
             </div>
