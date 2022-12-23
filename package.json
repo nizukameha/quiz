@@ -7,7 +7,7 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+ssh://git@gitlab.com/simplonlyon/promo23/ts-dom.git"
+      "url": "git+ssh://git@gitlab.com:nizukameha/quiz.git"
     },
     "keywords": [],
     "author": "",
