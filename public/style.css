@@ -24,6 +24,7 @@ body {
 }
 .commencement {
     font-size: 1.5rem;
+    height: 90vh;
 }
 .commencement ul {
     list-style-type: none;
