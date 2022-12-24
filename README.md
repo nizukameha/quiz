@@ -16,5 +16,5 @@ Après avoir validé, la bonne réponse s'affiche de couleur verte tandis que le
 ### Fin
 Un message personnalisé s'affiche à la fin du quiz en fonction du score.
 ## Liens
+- [Wireframe](https://figma.com/file/5mEK5T2YLbu0Vwy3uSqfAN/Untitled?node-id=0%3A1&t=BmFQfgYKGT1vFUqM-0)
 - [Quiz](https://axel-reviron-quiz.netlify.app/)
-- [Maquette](https://figma.com/file/5mEK5T2YLbu0Vwy3uSqfAN/Untitled?node-id=0%3A1&t=BmFQfgYKGT1vFUqM-0)
