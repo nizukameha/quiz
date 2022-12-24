@@ -17,3 +17,4 @@ Après avoir validé, la bonne réponse s'affiche de couleur verte tandis que le
 Un message personnalisé s'affiche à la fin du quiz en fonction du score.
 ## Liens
 - [Quiz](https://axel-reviron-quiz.netlify.app/)
+- [Maquette](figma.com/file/5mEK5T2YLbu0Vwy3uSqfAN/Untitled?node-id=0%3A1&t=BmFQfgYKGT1vFUqM-0)
