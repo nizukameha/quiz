@@ -66,8 +66,9 @@ let tabGoodAnswer: string[] = ['Kentaro Miura', '1984', '250 000 000', 'Irumi', 
 // String
 let endMessage:string = 'Merci d\'avoir participé a mon quiz :)<br>Vous pouvez trouver mes autres projets ici :<br><a href="https://axel-reviron.netlify.app/"><img src="https://axel-reviron.netlify.app/img/logo-h-purple-fonce.webp" alt="portfolio" style="width: 50%; margin-top: 10%;"></a>';
 const endMessageVeryBad = 'Les animes c\'est pas ton truc, mais il est jamais trop tard pour s\'y mettre !';
+const endMessageMiddle = 'C\'est pas terrible on va pas se mentir, je suis sur que tu peux faire mieux !';
 const endMessageGood = 'Super score, tu es clairement un fan d\'anime !';
-const endMessageVeryGood = 'Aucune erreur, on a affaire à un vrai Otaku !';
+const endMessageVeryGood = 'Pas d\'erreurs, on a affaire à un vrai Otaku !';
 
 /*----------
 CONDITIONS
@@ -174,6 +175,8 @@ function quizEnd() {
             if (scoreNumber <= 50) {
                 commencementP.innerHTML = endMessageVeryBad + '<br>' + endMessage;
             } else if (scoreNumber > 50 && scoreNumber <= 250) {
+                commencementP.innerHTML = endMessageMiddle + '<br>' + endMessage;
+            } else if (scoreNumber > 250 && scoreNumber < 500) {
                 commencementP.innerHTML = endMessageGood + '<br>' + endMessage;
             }
             else if (scoreNumber == 500) {
